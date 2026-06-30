@@ -1,0 +1,189 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+
+    background: #000;
+    overflow-x: hidden;
+    font-family: Arial, sans-serif;
+
+}
+
+#loader{
+
+position:fixed;
+inset:0;
+
+display:flex;
+justify-content:center;
+align-items:center;
+
+background:#000;
+
+z-index:99999;
+
+transition:opacity .5s ease;
+
+}
+
+.loader-content{
+
+width:min(400px,80vw);
+
+color:white;
+
+}
+
+.loader-bar{
+
+margin-top:20px;
+
+height:4px;
+
+background:#333;
+
+overflow:hidden;
+
+}
+
+.loader-progress{
+
+width:0;
+
+height:100%;
+
+background:white;
+
+transition:width .15s linear;
+
+}
+
+#loadingText{
+
+margin-top:15px;
+
+font-size:14px;
+
+opacity:.8;
+
+}
+
+.hero{
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+
+#heroCanvas{
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.gradient {
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        linear-gradient(to bottom,
+            rgba(0, 0, 0, .55),
+            rgba(0, 0, 0, .1),
+            rgba(0, 0, 0, .55));
+
+    pointer-events: none;
+
+}
+
+.vignette {
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        radial-gradient(circle,
+            transparent 30%,
+            rgba(0, 0, 0, .35));
+
+    pointer-events: none;
+
+}
+
+.noise {
+
+    position: absolute;
+
+    inset: 0;
+
+    opacity: .03;
+
+    pointer-events: none;
+
+}
+
+.content {
+
+    position: absolute;
+
+    inset: 0;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    flex-direction: column;
+
+    text-align: center;
+
+    color: #fff;
+
+    z-index: 10;
+
+}
+
+.content h1 {
+
+    font-size: clamp(60px, 8vw, 120px);
+
+    letter-spacing: .08em;
+
+    margin-bottom: 20px;
+
+}
+
+.content p {
+
+    font-size: 22px;
+
+    max-width: 650px;
+
+}
+
+.next {
+
+    height: 150vh;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    font-size: 60px;
+
+    background: #111;
+
+    color: #fff;
+
+}
