@@ -1,89 +1,58 @@
 const canvas = document.getElementById("heroCanvas");
-
 const ctx = canvas.getContext("2d", {
-    alpha: false,
-    desynchronized: true
+    alpha: false
 });
 
 const images = [];
 
 let currentFrame = 0;
 
-let canvasWidth = 0;
-let canvasHeight = 0;
-
-let drawWidth = 0;
-let drawHeight = 0;
-let drawX = 0;
-let drawY = 0;
-
 function resizeCanvas() {
 
     const dpr = window.devicePixelRatio || 1;
 
-    canvasWidth = canvas.clientWidth;
-    canvasHeight = canvas.clientHeight;
+    canvas.width = window.innerWidth * dpr;
+    canvas.height = window.innerHeight * dpr;
 
-    canvas.width = canvasWidth * dpr;
-    canvas.height = canvasHeight * dpr;
+    canvas.style.width = window.innerWidth + "px";
+    canvas.style.height = window.innerHeight + "px";
 
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-
-    calculateCover();
 
     drawFrame(currentFrame);
 
 }
 
-function calculateCover() {
-
-    const img = images[currentFrame] || images[0];
-
-    if (!img) return;
-
-    const imageRatio = img.width / img.height;
-    const canvasRatio = canvasWidth / canvasHeight;
-
-    if (canvasRatio > imageRatio) {
-
-        drawWidth = canvasWidth;
-        drawHeight = canvasWidth / imageRatio;
-
-    } else {
-
-        drawHeight = canvasHeight;
-        drawWidth = canvasHeight * imageRatio;
-
-    }
-
-    drawX = (canvasWidth - drawWidth) * 0.5;
-    drawY = (canvasHeight - drawHeight) * 0.5;
-
-}
-
-function drawFrame(index) {
+function drawFrame(index){
 
     currentFrame = index;
 
     const img = images[index];
 
-    if (!img) return;
+    if(!img) return;
 
-    calculateCover();
+    const cw = window.innerWidth;
+    const ch = window.innerHeight;
 
-    ctx.clearRect(
-        0,
-        0,
-        canvasWidth,
-        canvasHeight
+    ctx.clearRect(0,0,cw,ch);
+
+    const scale = Math.max(
+        cw / img.width,
+        ch / img.height
     );
+
+    const width = img.width * scale;
+    const height = img.height * scale;
+
+    const x = (cw - width) * 0.5;
+    const y = (ch - height) * 0.5;
 
     ctx.drawImage(
         img,
-        drawX,
-        drawY,
-        drawWidth,
-        drawHeight
+        x,
+        y,
+        width,
+        height
     );
 
 }

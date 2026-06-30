@@ -43,7 +43,7 @@ function loadFrame(index) {
                 loader.style.display = "none";
             }, 500);
 
-            setFrame(0);
+            drawFrame(0);
 
             requestAnimationFrame(() => {
                 resizeCanvas();
