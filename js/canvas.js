@@ -29,6 +29,8 @@ function resizeCanvas() {
 
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
 
+    calculateCover();
+
     drawFrame(currentFrame);
 
 }
@@ -66,6 +68,15 @@ function drawFrame(index) {
     const img = images[index];
 
     if (!img) return;
+
+    calculateCover();
+
+    ctx.clearRect(
+        0,
+        0,
+        canvasWidth,
+        canvasHeight
+    );
 
     ctx.drawImage(
         img,
