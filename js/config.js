@@ -2,7 +2,7 @@ const CONFIG = {
 
     frameCount: 151,
 
-    imagePath: "images/download_1_",
+    imagePath:"https://dyeklearnstocode.github.io/hero-scrub/images/download_1_",
 
     extension: ".jpg",
 
